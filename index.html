@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Web Series Review Blog</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <h1>Web Series Review Blog</h1>
+    <p>Your go-to place for web series reviews and recommendations!</p>
+    <button id="themeToggle" onclick="toggleTheme()">Toggle Theme</button>
+  </header>
+
+  <!-- Review Stats Section -->
+  <div class="review-stats">
+    <p id="totalReviews">Total Reviews: 0</p>
+    <p id="averageRating">Average Rating: 0 ★</p>
+  </div>
+
+  <!-- Category Tabs -->
+  <div class="tabs">
+    <button class="tab active" onclick="filterReviews('all')">All Reviews</button>
+    <button class="tab" onclick="filterReviews('top')">Top Rated</button>
+    <button class="tab" onclick="filterReviews('recent')">Most Recent</button>
+  </div>
+
+  <!-- Clickable List of Shows -->
+  <section class="show-list">
+    <h2>Popular Shows</h2>
+    <ul id="showList">
+      <li onclick="filterByShow('The Witcher')">The Witcher</li>
+      <li onclick="filterByShow('Stranger Things')">Stranger Things</li>
+      <li onclick="filterByShow('Breaking Bad')">Breaking Bad</li>
+      <li onclick="filterByShow('Money Heist')">Money Heist</li>
+      <li onclick="filterByShow('Dark')">Dark</li>
+    </ul>
+  </section>
+
+  <!-- Review Form Section -->
+  <section class="review-form">
+    <h2>Submit Your Review</h2>
+    <form id="reviewForm">
+      <div class="form-group">
+        <label for="seriesName">Series Name:</label>
+        <input type="text" id="seriesName" placeholder="Enter series name" required>
+      </div>
+
+      <div class="form-group">
+        <label for="reviewDate">Review Date:</label>
+        <input type="date" id="reviewDate" required>
+      </div>
+
+      <div class="form-group">
+        <label for="genre">Genre:</label>
+        <select id="genre" required>
+          <option value="" disabled selected>Select Genre</option>
+          <option value="Drama">Drama</option>
+          <option value="Action">Action</option>
+          <option value="Comedy">Comedy</option>
+          <option value="Horror">Horror</option>
+          <option value="Thriller">Thriller</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="reviewText">Your Review:</label>
+        <textarea id="reviewText" placeholder="Write your review..." required></textarea>
+      </div>
+
+      <!-- Image Upload -->
+      <div class="form-group">
+        <label for="seriesImage">Series Image:</label>
+        <input type="file" id="seriesImage" accept="image/*">
+      </div>
+
+      <!-- Star Rating -->
+      <div class="form-group rating">
+        <label>Rate the Series:</label>
+        <div class="stars" id="starRating">
+          <span class="star" data-value="1">★</span>
+          <span class="star" data-value="2">★</span>
+          <span class="star" data-value="3">★</span>
+          <span class="star" data-value="4">★</span>
+          <span class="star" data-value="5">★</span>
+        </div>
+      </div>
+
+      <button type="submit">Submit Review</button>
+    </form>
+  </section>
+
+  <!-- Reviews Section with Filter Options -->
+  <section class="user-reviews">
+    <div class="search-filter">
+      <input type="text" id="searchInput" onkeyup="searchReviews()" placeholder="Search for reviews...">
+    </div>
+    <div id="reviewsContainer" class="reviews-grid"></div>
+  </section>
+
+  <!-- Floating Action Button for Mobile -->
+  <button class="fab" onclick="scrollToForm()">+</button>
+
+  <!-- Info Section at the Bottom -->
+  <footer class="info-section">
+    <h2>About Us</h2>
+    <p>We are a team of enthusiastic reviewers passionate about finding and sharing the best web series. From dramas to thrillers, we cover it all. Enjoy your stay and find your next binge-watch!</p>
+    <p>&copy; 2024 Web Series Review Blog</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
